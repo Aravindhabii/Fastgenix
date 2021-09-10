@@ -1,19 +1,23 @@
 <%- layout('layout/layout') %>
-<h1>Fastgenix</h1>
-<div class="d-flex">
+<link rel="stylesheet" href="/stylesheets/common.css">
+<div class="container1">
+	<h1 class="header1">Fastgenix</h1>
+</div>
+<div class="vh-100">
+<div class="container">
 	<% products.forEach(product => { %>
-	<div class="card" style="width: 18rem">
+	<div class="card border border-dark" style="width: 24rem; height: 35rem;">
 		<img
 			src="<%= product.image%>"
-			class="card-img-top"
+			class="card-img-top "
 			alt="Image not available..."
 		/>
 		<div class="card-body">
-			<h5 class="card-title"><%= product.name %></h5>
+			<h3 class="card-title"><%= product.name %></h3>
 			<p class="card-text"><%= product.description %></p>
 		</div>
 		<div class="card-body p-0">
-			<form action="/cart" method="POST">
+			<form action="/cart" class="form mt-5" method="POST">
 				<input
 					type="text"
 					value="<%= product._id %>"
@@ -23,14 +27,13 @@
 				<button
 					class="
 						card-link
-						d-block
-						bg-secondary
+						bg-primary
 						text-white text-decoration-none text-center
 						p-2
 						rounded
 						border-0
 						outline-0
-						w-100
+						w-75
 					"
 				>
 					Add to Cart
@@ -39,4 +42,5 @@
 		</div>
 	</div>
 	<% }) %>
+</div>
 </div>
