@@ -1,0 +1,46 @@
+<%- layout('layout/layout') %>
+<h1 class="text-center">Orders</h1>
+<div class="container">
+	<ul
+		class="
+			d-flex
+			list-unstyled
+			w-100
+			justify-content-around
+			border-bottom border-dark
+			pb-2
+		"
+	>
+		<li>Item</li>
+		<li>Delivery ID</li>
+		<li>Order State</li>
+		<li>Customer ID</li>
+		<li>Pickup Location</li>
+	</ul>
+	<div class="row">
+		<%order && order.products.forEach((product,index) => { %>
+		<div class="w-100 h-25 border rounded row">
+			<div class="position-relative col-2">
+				<img
+					class="position-relative w-100"
+					src="<%= product.image %> "
+					alt="Image not available..."
+				/>
+			</div>
+			<% if (order.deliveredBy) { %>
+				<div class="col-3"><%= order.deliveredBy._id %> </div>
+			<% } else { %>
+				<div class="col-3">Not Assigned</div> 
+			 <% } %> 
+			<div class="col-2"><%= order.orderState %></div>
+			<div class="col-3"><%= order.orderedBy._id %></div>
+			<div class="col-2"><%= product.addresses[index] %></div>
+		</div>
+		<% }) %>
+		<a
+			href="/"
+			class="text-center text-decoration-none btn btn-success text-white my-3"
+			>Go to Home</a
+		>
+	</div>
+</div>

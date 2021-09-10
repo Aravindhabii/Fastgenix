@@ -1,0 +1,72 @@
+<%- layout('layout/layout') %>
+
+<h1>Admin dashboard</h1>
+<div class="container">
+  <ul
+    class="
+      d-flex
+      w-100
+      list-unstyled
+      justify-content-around
+      border-bottom border-dark
+      pb-2
+    "
+  >
+    <li>Orders</li>
+    <li>Order Status</li>
+    <li>Delivery person</li>
+    <li>Assign</li>
+  </ul>
+  <% allOrders.forEach((order,index) => { %>
+  <div class="border">
+    <h6 class="text-center text-uppercase border-bottom">
+      Order <%= index+1 %>
+    </h6>
+    <div class="row">
+      <% order.products.forEach(product => { %>
+      <div class="col-3 me-3">
+        <h5><%= product.name %></h5>
+        <img
+          class="w-50"
+          src="<%= product.image %> "
+          alt="Image not found..."
+        />
+      </div>
+      <% }) %>
+      <div class="col-2 me-auto text-center"><%= order.orderState %></div>
+      <div class="col-6">
+        <form action="/dashboard" class="d-flex" method="POST">
+          <select
+            class="form-select w-50 h-25 mx-5"
+            aria-label="Default select example"
+            name="deliveryPerson"
+          >
+            <option selected disabled>Select delivery person</option>
+            <% deliveryPerson.forEach(person => { %>
+            <option value="<%= person._id %> <%= order._id %> ">
+              <%= person.username %>
+            </option>
+            <% }) %>
+          </select>
+          <button class="btn btn-info w-25 text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-25"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>

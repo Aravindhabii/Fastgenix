@@ -1,0 +1,62 @@
+<%- layout('layout/layout') %>
+<h1>Cart</h1>
+<div class="container">
+	<ul
+		class="
+			d-flex
+			list-unstyled
+			w-75
+			justify-content-around
+			border-bottom border-dark
+			pb-2
+			col-6
+			offset-2
+		"
+	>
+		<li>Item</li>
+		<li>Category</li>
+		<li>Quantity</li>
+		<li>Remove</li>
+	</ul>
+	<div class="row">
+		<% user.carts && user.carts.forEach(cart => { %>
+		<div class="w-75 h-25 col-6 offset-2 border rounded row">
+			<div class="position-relative w-25 col-3">
+				<img
+					class="position-relative w-100"
+					src="<%= cart.image %> "
+					alt="Image not available..."
+				/>
+			</div>
+			<div class="col-3 text-center"><%= cart.category %></div>
+			<div class="col-3">
+				<input type="number" name="quantity" min="1" max="10" value="1" />
+			</div>
+			<div class="col-3 text-center">
+				<form action="/remove-item" method="POST">
+					<input type="text" name="id" value="<%= cart._id %>" class="d-none" />
+					<button class="d-inline bg-white outline-0 border-0">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-25 text-center"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						</svg>
+					</button>
+				</form>
+			</div>
+		</div>
+		<% }) %>
+	</div>
+	<form action="/checkout" method="POST">
+		<button>Place Order</button>
+	</form>
+</div>
