@@ -15,14 +15,21 @@ const Products = require('./models/products.model');
 
 const app = express();
 
+let db_url = "";
+if (process.env.NODE_ENV !== "production") {
+  db_url = "mongodb://localhost:27017/Fastgenix";
+} else {
+  db_url = process.env.DB_URL;
+}
 mongoose
-  .connect("mongodb://localhost:27017/Fastgenix")
+  .connect(db_url)
   .then(() => {
     console.log("DATABASE CONNECTED");
   })
   .catch((err) => {
     console.log(err);
   });
+
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
