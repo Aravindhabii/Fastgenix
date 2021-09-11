@@ -1,7 +1,10 @@
 <%- layout('layout/layout') %>
+<section style=" display: flex; justify-content: center; align-items: center;">
+<div class="card" style="width: 40rem; height: 30rem; display: flex; justify-content: center;">
 <form action="/login" method="POST">
-	<div class="input-group">
-		<label for="phoneNumeber" class="form-label">Phone Number</label
+	<div class="text-center"><h1>Login</h1></div>
+	<div class="form-group p-3">
+		<label for="phoneNumber" class="form-label"><b>Phone Number</b></label
 		><input
 			type="number"
 			id="phoneNumber"
@@ -9,8 +12,8 @@
 			name="phoneNumber"
 		/>
 	</div>
-	<div class="form-group">
-		<label for="username">username</label
+	<div class="form-group p-3">
+		<label for="username"><b>Username</b></label
 		><input
 			type="text"
 			id="uername"
@@ -18,8 +21,8 @@
 			name="username"
 		/>
 	</div>
-	<div class="form-group">
-		<label for="password">Password</label
+	<div class="form-group p-3 mb-3">
+		<label for="password"><b>Password</b></label
 		><input
 			type="password"
 			id="password"
@@ -27,5 +30,7 @@
 			name="password"
 		/>
 	</div>
-	<button>Continue</button>
+	<button class="btn btn-primary start-50 position-relative translate-middle-x" style="width: 20%;">Continue</button>
 </form>
+</div>
+</section>

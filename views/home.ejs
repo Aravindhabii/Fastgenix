@@ -5,8 +5,10 @@
 </div>
 <div class="vh-100">
 <div class="container">
+	<div ><h1>Products</h1></div>
+	<div class="flex">
 	<% products.forEach(product => { %>
-	<div class="card border border-dark" style="width: 24rem; height: 35rem;">
+	<div class="card border border-dark" style="width: 24rem; height: 30rem;">
 		<img
 			src="<%= product.image%>"
 			class="card-img-top "
@@ -42,5 +44,6 @@
 		</div>
 	</div>
 	<% }) %>
+	</div>
 </div>
 </div>
